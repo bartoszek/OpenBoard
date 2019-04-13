@@ -45,7 +45,7 @@ QT += core
 
 INCLUDEPATH += src
 
-include($$THIRD_PARTY_PATH/libs.pri)
+include(libs.pri)
 include(src/adaptors/adaptors.pri)
 include(src/api/api.pri)
 include(src/board/board.pri)
@@ -71,9 +71,7 @@ include(plugins/plugins.pri)
 INCLUDEPATH += plugins/cffadaptor/src
 
 #ThirdParty
-DEPENDPATH += $$THIRD_PARTY_PATH/quazip/
-INCLUDEPATH += $$THIRD_PARTY_PATH/quazip/
-include($$THIRD_PARTY_PATH/quazip/quazip.pri)
+INCLUDEPATH += /usr/include/quazip5/
 
 FORMS += resources/forms/mainWindow.ui \
    resources/forms/preferences.ui \
