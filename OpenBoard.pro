@@ -71,9 +71,25 @@ include(plugins/plugins.pri)
 INCLUDEPATH += plugins/cffadaptor/src
 
 #ThirdParty
-DEPENDPATH += $$THIRD_PARTY_PATH/quazip/
-INCLUDEPATH += $$THIRD_PARTY_PATH/quazip/
-include($$THIRD_PARTY_PATH/quazip/quazip.pri)
+#quazip
+isEmpty(USE_SYSTEM_QUAZIP) {
+  DEPENDPATH += $$THIRD_PARTY_PATH/quazip/
+  INCLUDEPATH += $$THIRD_PARTY_PATH/quazip/
+  include($$THIRD_PARTY_PATH/quazip/quazip.pri)
+} else {
+  isEmpty( PREFIX ):PREFIX = /usr
+  greaterThan(QT_MAJOR_VERSION, 4) { #Qt5
+    message(System quazip5)
+    isEmpty(QUAZIP_LIB): QUAZIP_LIB = -lquazip5
+    isEmpty(QUAZIP_INCLUDE): QUAZIP_INCLUDE = $${PREFIX}/include/quazip5
+  } else { #Qt4
+    message(System quazip)
+    isEmpty(QUAZIP_LIB): QUAZIP_LIB = -lquazip
+    isEmpty(QUAZIP_INCLUDE): QUAZIP_INCLUDE = $${PREFIX}/include/quazip
+  }
+  INCLUDEPATH += $${QUAZIP_INCLUDE}
+  LIBS += $${QUAZIP_LIB}
+}
 
 FORMS += resources/forms/mainWindow.ui \
    resources/forms/preferences.ui \
