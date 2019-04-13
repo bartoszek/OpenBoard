@@ -13,9 +13,6 @@ linux-g++: SUB_DIR = linux
 linux-g++-32: SUB_DIR = linux
 linux-g++-64: SUB_DIR = linux
 
-THIRD_PARTY_PATH = ../../../Sankore-ThirdParty
-QUAZIP_DIR   = "$$PWD/../../../Sankore-ThirdParty/quazip/quazip-0.3"
-
 BUILD_DIR = build/$$SUB_DIR
 CONFIG(debug, debug|release):BUILD_DIR = $$BUILD_DIR/debug
 CONFIG(release, debug|release) {
