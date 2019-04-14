@@ -1,0 +1,20 @@
+language: cpp
+
+os:
+  - linux
+
+compiler:
+  - gcc
+
+addons:
+  apt:
+    packages:
+      - qt5
+      - libpoppler-dev
+      - libquazip5-dev
+
+before_install:
+
+script:
+    qmake USE_SYSTEM_QUAZIP=1 OpenBoard.pro
+  - make all
