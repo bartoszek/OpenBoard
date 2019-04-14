@@ -17,12 +17,14 @@ compiler:
 addons:
   apt:
     packages:
-      - libqt5multimediawidgets5
-      - libqt5xmlpatterns5
-      - libqt5webkit5
-      - libqt5svg5
+      - qt5-default
       - qtbase5-dev
       - qtscript5-dev
+      - qttools5-dev
+      - qtmultimedia5-dev
+      - libqt5xmlpatterns5-dev
+      - libqt5webkit5-dev
+      - libqt5svg5-dev
 
 before_install:
 
