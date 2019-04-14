@@ -96,10 +96,16 @@ FORMS += resources/forms/mainWindow.ui \
    resources/forms/brushProperties.ui \
    resources/forms/documents.ui \
    resources/forms/blackoutWidget.ui \
-   resources/forms/trapFlash.ui \
    resources/forms/youTubePublishingDialog.ui \
    resources/forms/capturePublishing.ui \
    resources/forms/intranetPodcastPublishingDialog.ui
+versionAtMost(QT_VERSION,5.5) { #Qt 5.5
+   message(System Qt<=5.5)
+   FORMS += resources/forms/trapFlash.ui
+} else { #Qt 5.6
+   message(System Qt>=5.6)
+   FORMS += resources/forms/trapFlash-qt56.ui
+}
 
 UB_ETC.files = resources/etc
 UB_I18N.files = resources/i18n/*.qm
