@@ -33,6 +33,21 @@ addons:
       - libavcodec-dev
       - libavformat-dev
       - libswscale-dev
+      - libpaper-dev
+      - libbz2-dev
+      - liblzma-dev
+      - libass-dev
+      - libopus-dev
+      - libogg-dev
+      - libx264-dev
+      - libvorbis-dev
+      - libtheora-dev
+      - libvpx-dev
+      - libmp3lame-dev
+      - libsdl-dev
+      - libxcb-shm0-dev
+      - libva-dev
+      - libfdk-aac-dev
 
 before_install:
 
