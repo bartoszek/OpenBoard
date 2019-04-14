@@ -25,6 +25,9 @@ addons:
       - libqt5xmlpatterns5-dev
       - libqt5webkit5-dev
       - libqt5svg5-dev
+      - libquazip5-dev
+      - libquazip5-headers
+      - libssl-dev
 
 before_install:
 
