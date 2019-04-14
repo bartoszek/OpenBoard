@@ -3,18 +3,27 @@ language: cpp
 os:
   - linux
 
+dist:
+  - xenial
+
 compiler:
   - gcc
 
+# packages umtimediawidgets webkitwidgets multimedia uitools xmlpatterns script svg webkit
 addons:
   apt:
     packages:
-      - qt5
-      - libpoppler-dev
-      - libquazip5-dev
+      - libqt5multimediawidgets5
+      - libqt5xmlpatterns5
+      - libqt5webkit5
+      - libqt5svg5
+      - qtbase5-dev
+      - qtscript5-dev
 
 before_install:
 
 script:
-    qmake USE_SYSTEM_QUAZIP=1 OpenBoard.pro
+  - qmake USE_SYSTEM_QUAZIP=1 OpenBoard.pro
   - make all
+  
+  
