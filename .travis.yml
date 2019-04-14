@@ -31,6 +31,8 @@ addons:
       - libpoppler-private-dev
       - libpoppler-cpp-dev
       - libavcodec-dev
+      - libavformat-dev
+      - libswscale-dev
 
 before_install:
 
