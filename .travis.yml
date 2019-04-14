@@ -29,6 +29,7 @@ addons:
       - libquazip5-headers
       - libssl-dev
       - libpoppler-private-dev
+      - libpoppler-cpp-dev
       - libavcodec-dev
 
 before_install:
