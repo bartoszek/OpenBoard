@@ -13,5 +13,5 @@ install:
 build_script:
   - ls %QTDIR%\bin
   - ls C:\Qt\Tools\mingw492_32\bin
-  - qmake QtTest.pro
+  - qmake OpenBoard.pro
   - mingw32-make
