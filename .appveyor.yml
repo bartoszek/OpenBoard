@@ -11,5 +11,6 @@ install:
   - set QTDIR=C:\Qt\5.9.2\mingw53_32
   - set PATH=%PATH%;%QTDIR%\bin;C:\MinGW\bin
 build_script:
+  - ls %QDIR%\bin
   - qmake QtTest.pro
   - mingw32-make
