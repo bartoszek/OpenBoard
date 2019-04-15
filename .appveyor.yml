@@ -7,12 +7,6 @@ branches:
 shallow_clone: true
 clone_depth: 1
 
-image:
-  - Visual Studio 2013
-  - Visual Studio 2015
-  - Visual Studio 2017
-  - Ubuntu
-
 environment:
   VSVER: 18.0
   matrix:
@@ -34,6 +28,7 @@ matrix:
   fast_finish: true
 
 install:
+  - ls C:\Qt\5.5
   - '%QTDIR%\bin\qtenv2.bat'
   - if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
   - if %cname%==mingw set make=mingw32-make.exe
