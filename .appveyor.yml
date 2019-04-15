@@ -12,20 +12,25 @@ image:
   - Visual Studio 2015
   
 environment:
-  VSVER: 18.0
   matrix:
     - QTDIR: C:\Qt\5.5\msvc2013
       cname: Win32-VS2013
+      VSVER: 12.0
     - QTDIR: C:\Qt\5.5\msvc2013_64
       cname: Win64-VS2013
+      VSVER: 12.0
     - QTDIR: C:\Qt\5.6\msvc2013
       cname: Win32-VS2013
+      VSVER: 12.0
     - QTDIR: C:\Qt\5.6\msvc2013_64
       cname: Win64-VS2013
+      VSVER: 12.0
     - QTDIR: C:\Qt\5.6.3\msvc2015
       cname: Win32-VS2015
+      VSVER: 14.0
     - QTDIR: C:\Qt\5.6.3\msvc2015_64
       cname: Win64-VS2015
+      VSVER: 14.0
 
 matrix:
   exclude:
@@ -44,7 +49,6 @@ matrix:
   fast_finish: true
 
 install:
-  - ls "%ProgramFiles(x86)%"
   - '%QTDIR%\bin\qtenv2.bat'
   - if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
   - if %cname%==mingw set make=mingw32-make.exe
@@ -56,6 +60,10 @@ install:
   - if %cname%==mingw set PATH=%PATH%;%QTDIR%\bin;C:\MinGW\bin
 #  - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
 
-build_script:
+before_build:
+  - cd %APPVEYOR_BUILD_FOLDER%
   - qmake OpenBoard.pro
-  - nmake
+
+build_script:
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - '%make%'
