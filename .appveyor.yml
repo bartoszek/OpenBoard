@@ -8,10 +8,10 @@ image:
   - Visual Studio 2017
   - Ubuntu
 install:
-  - set QTDIR=C:\Qt\5.5
-  - set PATH=%PATH%;%QTDIR%\bin;C:\Qt\Tools\mingw530_32
+  - set QTDIR=C:\Qt\5.5\mingw492_32
+  - set PATH=%PATH%;%QTDIR%\bin;C:\Qt\Tools\mingw492_32
 build_script:
-  - ls C:\Qt\5.5 
-  - ls C:\Qt\Tools\mingw530_32\bin
+  - ls %QTDIR%\bin
+  - ls C:\Qt\Tools\mingw492_32\bin
   - qmake QtTest.pro
   - mingw32-make
