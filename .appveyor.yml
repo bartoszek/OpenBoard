@@ -34,11 +34,16 @@ matrix:
   fast_finish: true
 
 install:
-  - ps: $env:VSCOMNTOOLS=(Get-Content ("env:VS" + "$env:VSVER" + "0COMNTOOLS"))
-  - set QTDIR=C:\Qt\5.5\msvc2013_64
-  - set PATH=%PATH%;%QTDIR%\bin;
-  - call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd6
-  - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
+  - '%QTDIR%\bin\qtenv2.bat'
+  - if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
+  - if %cname%==mingw set make=mingw32-make.exe
+  - if %cname%==mingw g++ --version
+  - if %cname%==mingw %make% --version
+  - if not %cname%==mingw call "%ProgramFiles(x86)%\Microsoft Visual Studio %VSVER%\VC\vcvarsall.bat" %ARCH%
+  - if not %cname%==mingw set make=nmake.exe
+  - if not %cname%==mingw %make% /? > nul
+  - if %cname%==mingw set PATH=%PATH%;%QTDIR%\bin;C:\MinGW\bin
+#  - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
 
 build_script:
   - qmake OpenBoard.pro
