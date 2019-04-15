@@ -55,7 +55,6 @@ addons:
       - libfdk-aac-dev
   homebrew:
     packages:
-      - qt
       - ffmpeg
       - openssl
       - quazip
@@ -63,7 +62,7 @@ addons:
 
 before_install:
 before_script:
-  - if [ $TRAVIS_OS_NAME = osx ]; then brew link qt5 --force ; fi
+  - if [ $TRAVIS_OS_NAME = osx ]; then brew install qt@5.7 --with-qtwebkit; brew link qt --force ; fi
 
 script:
   - qmake OpenBoard.pro
