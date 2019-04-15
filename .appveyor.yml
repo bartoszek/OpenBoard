@@ -13,6 +13,26 @@ image:
   - Visual Studio 2017
   - Ubuntu
 
+environment:
+  VSVER: 18.0
+  matrix:
+    - QTDIR: C:\Qt\5.5\msvc2013
+      cname: Win32-VS2013
+    - QTDIR: C:\Qt\5.5\msvc2013_64
+      cname: Win64-VS2013
+    - QTDIR: C:\Qt\5.6\msvc2013
+      cname: Win32-VS2013
+    - QTDIR: C:\Qt\5.6\msvc2013_64
+      cname: Win64-VS2013
+    - QTDIR: C:\Qt\5.6.3\msvc2015
+      cname: Win32-VS2015
+    - QTDIR: C:\Qt\5.6.3\msvc2015_64
+      cname: Win64-VS2015
+
+
+matrix:
+  fast_finish: true
+
 install:
   - ps: $env:VSCOMNTOOLS=(Get-Content ("env:VS" + "$env:VSVER" + "0COMNTOOLS"))
   - set QTDIR=C:\Qt\5.5\msvc2013_64
