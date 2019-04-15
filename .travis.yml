@@ -6,6 +6,11 @@ branches:
 
 os:
   - linux
+  - osx
+
+matrix:
+  allow_failures:
+    - os: osx
 
 dist:
   - xenial
@@ -48,11 +53,17 @@ addons:
       - libxcb-shm0-dev
       - libva-dev
       - libfdk-aac-dev
+  homebrew:
+    packages:
+      - qt
+      - ffmpeg
+      - openssl
+      - quazip
 
 before_install:
 
 script:
-  - qmake USE_SYSTEM_QUAZIP=1 OpenBoard.pro
+  - qmake OpenBoard.pro
   - make all
   
   
