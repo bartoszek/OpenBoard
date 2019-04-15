@@ -14,8 +14,10 @@ image:
   - Ubuntu
 
 install:
+  - ps: $env:VSCOMNTOOLS=(Get-Content ("env:VS" + "$env:VSVER" + "0COMNTOOLS"))
   - set QTDIR=C:\Qt\5.5\msvc2013_64
   - set PATH=%PATH%;%QTDIR%\bin;
+  - call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd6
   - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
 
 build_script:
