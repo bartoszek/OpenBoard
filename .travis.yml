@@ -61,8 +61,8 @@ addons:
       - poppler
 
 before_install:
-before_script:
   - if [ $TRAVIS_OS_NAME = osx ]; then brew install qt@5.7 --with-qtwebkit; brew link qt --force ; fi
+before_script:
 
 script:
   - qmake OpenBoard.pro
