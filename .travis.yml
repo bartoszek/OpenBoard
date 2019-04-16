@@ -53,16 +53,24 @@ addons:
       - libxcb-shm0-dev
       - libva-dev
       - libfdk-aac-dev
-  homebrew:
-    packages:
-      - ffmpeg
-      - openssl
-      - quazip
-      - poppler
+# homebrew:
+#   packages:
+#     - ffmpeg
+#     - openssl
+#     - quazip
+#     - poppler
 
-before_install:
-  - if [ $TRAVIS_OS_NAME = osx ]; then brew update; cd $( brew --prefix )/Homebrew/Library/Taps/homebrew/homebrew-core; git checkout 9ba3d6ef8891e5c15dbdc9333f857b13711d4e97 Formula/qt@5.5.rb;brew install qt@5.5; brew link qt --force ; fi
-before_script:
+install:
+  - |-
+    if [ $TRAVIS_OS_NAME = osx ]; then 
+      brew update
+      cd $( brew --prefix )/Homebrew/Library/Taps/homebrew/homebrew-core
+      git fetch --unshallow
+      git checkout 9ba3d6ef8891e5c15dbdc9333f857b13711d4e97 # Formula/qt@5.5.rb
+      brew install qt@5.5 
+      brew install poppler quazip openssl ffmpeg
+      brew link --force qt@5.5
+    fi
 
 script:
   - qmake OpenBoard.pro
