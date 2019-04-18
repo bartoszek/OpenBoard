@@ -129,12 +129,16 @@ install:
   - if not %cname%==mingw %make% /? > nul
   - if %cname%==mingw set PATH=%PATH%;%QTDIR%\bin;C:\MinGW\bin
 #  - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
+# download OpenBoard-Thirdparty
+  - curl -o libs.zip "https://ci.appveyor.com/api/projects/%APPVEYOR_REPO_NAME%-ThirdParty/artifacts/libs.zip" --data-urlencode "job=%APPVEYOR_JOB_NAME%"
+  - sh: file libs.zip
+  - 7z --help
+  - 7z x libs.zip -c%APPVEYOR_BUILD_FOLDER%\OpenBoard-ThirdParty
+# - 7z x libs.zip -c..\OpenBoard-ThirdParty
 
 before_build:
   - cd %APPVEYOR_BUILD_FOLDER%
   - qmake OpenBoard.pro
-# download OpenBoard-Thirdparty
-# - curl -o libs-%cname%-%QTDIR:~6,4:/=%.zip https://ci.appveyor.com/api/projects/bartoszek/OpenBoard-ThirdParty/artifacts/libs.zip?job=%APPVEYOR_JOB_NAME%
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
